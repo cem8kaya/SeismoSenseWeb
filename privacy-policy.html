@@ -153,7 +153,7 @@
 
   <div class="content">
 
-    <div class="last-updated">Last updated: January 2025</div>
+    <div class="last-updated">Last updated: February 27, 2026</div>
 
     <div class="privacy-highlight">
       <p><strong>The short version:</strong> SeismoSense processes all seismic data entirely on your device. No seismic readings, sensor data, or location information is ever transmitted to our servers or any third party. Your data is yours.</p>
@@ -177,17 +177,16 @@
         <li>Is only accessible to you via the in-app Analysis View or CSV export</li>
       </ul>
 
-      <h3>Location Data (Optional)</h3>
-      <p>SeismoSense may request location permissions to log the geographic coordinates of detected seismic events. This data:</p>
+      <h3>Location Data (Background Keepalive Only)</h3>
+      <p>SeismoSense requests location permission solely as a technical mechanism to keep the accelerometer active when your screen is locked or the app is in the background. Specifically:</p>
       <ul>
-        <li>Is stored only on your device alongside the event record</li>
-        <li>Is never uploaded or shared with any third party</li>
-        <li>Is used solely to give your personal event logs geographic context</li>
-        <li>Can be disabled at any time in your device's Settings → SeismoSense → Location</li>
+        <li>Location access is used exclusively as a background keepalive — not to record where you are</li>
+        <li>Location readings are discarded immediately and are never stored, logged, or written to disk</li>
+        <li>No geographic coordinates are attached to seismic event records</li>
+        <li>Location data is never transmitted to any server or third party</li>
+        <li>On iOS, this is implemented via the Zone Monitoring (significant-location-change) API, which requires the "Always" location permission to enable uninterrupted background sensor access</li>
+        <li>You can revoke this permission at any time in Settings → SeismoSense → Location; doing so will disable continuous background monitoring</li>
       </ul>
-
-      <h3>Background Activity (iOS: Zone Monitoring)</h3>
-      <p>On iOS, the app uses the device's location-based Zone Monitoring API to maintain background sensor access for continuous monitoring. This requires the "Always" location permission. No location data collected during background monitoring is transmitted externally.</p>
     </div>
 
     <div class="policy-section">
@@ -200,6 +199,7 @@
         <li>Usage analytics or behavioral tracking data</li>
         <li>Crash reports (no analytics SDK is embedded)</li>
         <li>Any seismic or sensor data via network requests</li>
+        <li>Location coordinates — location access is used only as a background keepalive and all readings are discarded immediately</li>
       </ul>
     </div>
 
@@ -254,7 +254,7 @@
     <p>
       <a href="/">← SeismoSense Home</a>
       &nbsp;·&nbsp;
-      © 2024 SeismoSense. All rights reserved.
+      © 2026 SeismoSense. All rights reserved.
     </p>
   </footer>
 
