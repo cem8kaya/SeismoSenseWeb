@@ -2097,6 +2097,18 @@
       traverseAndTranslate(document.body, trTranslations, lang);
       localStorage.setItem('seismosense_lang', lang);
       document.documentElement.lang = lang;
+
+      // Update legal language links
+      const privacyLinks = document.querySelectorAll('a[href*="privacy-policy.html"], a[href*="gizlilik-politikasi.html"]');
+      const termsLinks = document.querySelectorAll('a[href*="terms-of-use.html"], a[href*="kullanim-kosullari.html"]');
+
+      privacyLinks.forEach(link => {
+        link.href = lang === 'tr' ? 'https://seismosense.com/gizlilik-politikasi.html' : 'https://seismosense.com/privacy-policy.html';
+      });
+
+      termsLinks.forEach(link => {
+        link.href = lang === 'tr' ? 'https://seismosense.com/kullanim-kosullari.html' : 'https://seismosense.com/terms-of-use.html';
+      });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
