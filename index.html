@@ -1342,6 +1342,11 @@
       </div>
       <div class="nav-cta">
         <a href="#download" class="btn btn-primary" style="padding:10px 20px;font-size:0.88rem;">Get the App</a>
+        <div class="lang-switch" style="display:flex; gap:8px; cursor:pointer; align-items:center; margin-left:12px;">
+          <span onclick="setLanguage('en')" style="font-size:1.2rem; transition: 0.2s;" id="lang-en">🇬🇧</span>
+          <span onclick="setLanguage('tr')" style="font-size:1.2rem; opacity:0.5; transition: 0.2s;"
+            id="lang-tr">🇹🇷</span>
+        </div>
       </div>
     </div>
   </nav>
@@ -1955,6 +1960,153 @@
       }
       draw();
     })();
+    /* ── Localization Dictionary ── */
+    const trTranslations = {
+      "Features": "Özellikler",
+      "How It Works": "Nasıl Çalışır",
+      "Privacy": "Gizlilik",
+      "Download": "İndir",
+      "Get the App": "İndir",
+      "Live Seismic Monitoring": "Canlı Sismik İzleme",
+      "Your Personal": "Kişisel",
+      "Seismograph.": "Sismografınız.",
+      "SeismoSense turns the accelerometer already inside your phone into a professional-grade seismic monitoring station. Detect, log, and analyze earthquakes in real time — before the shaking even stops.": "SeismoSense, telefonunuzun içindeki ivmeölçeri profesyonel düzeyde bir sismik izleme istasyonuna dönüştürür. Depremleri gerçek zamanlı olarak — sarsıntı bile bitmeden önce — tespit edin, kaydedin ve analiz edin.",
+      "Download on the": "Uygulamayı indirin",
+      "App Store": "App Store",
+      "Get it on": "Hemen alın",
+      "Google Play": "Google Play",
+      "Monitoring": "İzleniyor",
+      "SENSOR ACTIVITY – LIVE": "SENSÖR AKTİVİTESİ – CANLI",
+      "Confidence": "Güvenilirlik",
+      "RECENT EVENTS": "SON OLAYLAR",
+      "No anomaly detected": "Anormallik tespit edilmedi",
+      "Baseline stable · 00:12 ago": "Temel seviye kararlı · 12sn önce",
+      "Vibration logged": "Titreşim kaydedildi",
+      "P-wave · 02:31 ago": "P-dalgası · 2dk önce",
+      "Industry-Standard Algorithm": "Endüstri Standardı Algoritma",
+      "Wave Detection": "Dalga Tespiti",
+      "On-Device Processing": "Cihaz Üzerinde İşleme",
+      "Data Sent to Servers": "Sunuculara Gönderilen Veri",
+      "The Difference": "Farkımız",
+      "Why SeismoSense is different": "SeismoSense neden farklı?",
+      "Most earthquake apps are just notification wrappers around public geological APIs. SeismoSense is a real-time sensor engine.": "Çoğu deprem uygulaması, yalnızca halka açık jeolojik API'lerin etrafına sarılmış bildirim ekranlarıdır. SeismoSense ise gerçek zamanlı bir sensör motorudur.",
+      "❌ Standard Earthquake Apps": "❌ Standart Deprem Uygulamaları",
+      "Poll central geological servers every few minutes": "Merkezi sunucuları birkaç dakikada bir sorgular",
+      "Notify you 5–15 minutes after the shaking stopped": "Sarsıntı durduktan 5-15 dakika sonra sizi bilgilendirir",
+      "Can't distinguish what specific location felt": "Bulunduğunuz tam konumun ne hissettiğini ayırt edemez",
+      "No local waveform data — just magnitudes from stations miles away": "Yerel dalga formu datası yoktur — sadece uzak istasyonların büyüklükleri",
+      "No personal history or exportable records": "Kişisel geçmiş veya dışa aktarılabilir kayıt yoktur",
+      "✓ SeismoSense": "✓ SeismoSense",
+      "Reads the accelerometer on your device at high frequency": "Cihazınızdaki ivmeölçeri yüksek frekansta okur",
+      "Detects P-waves before the main shaking arrives": "Ana sarsıntı ulaşmadan önce P-dalgalarını tespit eder",
+      "Processes all data locally — no server round-trips": "Tüm verileri cihazda işler — sunucu gecikmesi yoktur",
+      "Logs your exact local waveform, duration, and magnitude estimate": "Yerel dalga formunuzu, süresini ve tahmini büyüklüğü kaydeder",
+      "Exports full CSV history for personal records or citizen science": "Kayıtlar için tam CSV geçmişi oluşturur",
+      "Core Technology": "Temel Teknoloji",
+      "Lab-level seismology.<br>In your pocket.": "Laboratuvar düzeyinde sismoloji.<br>Cebinizde.",
+      "Lab-level seismology. In your pocket.": "Laboratuvar düzeyinde sismoloji. Cebinizde.",
+      "Every feature is engineered to give you the most accurate, private, and actionable seismic data possible from consumer hardware.": "Her özellik, tüketici donanımından olabilecek en doğru, gizli ve eyleme geçirilebilir sismik veriyi sağlamak üzere üretilmiştir.",
+      "STA/LTA Algorithm": "STA/LTA Algoritması",
+      "The industry-standard Short-Term Average / Long-Term Average algorithm — the same technique used by professional seismological networks — runs continuously on your device. It mathematically separates genuine seismic shifts from everyday vibrations like passing trucks or footsteps.": "Profesyonel ağlar tarafından kullanılan STA/LTA algoritması cihazınızda sürekli olarak çalışır. Sismik değişimleri kamyon geçişleri gibi günlük titreşimlerden ayırır.",
+      "P-Wave & S-Wave Logging": "P-Dalgası ve S-Dalgası Kaydı",
+      "Earthquakes have distinct waveform signatures. SeismoSense applies advanced bandpass filters to catch the first whisper of a tremor — the P-wave compressional wave — before the destructive S-wave shear arrives. Every event is logged with magnitude estimate, confidence score, duration, and full wave breakdown.": "Depremlerin belirgin dalga formu imzaları vardır. SeismoSense, yıkıcı S-dalgası ulaşmadan önce sarsıntının ilk fısıltısı olan P-dalgasını yakalar. Her olay tahmini büyüklük, güvenilirlik, süre ve detaylı analiz ile kaydedilir.",
+      "Background Zone Monitoring": "Arka planda Bölge İzleme",
+      "Lock your screen and place your phone on the nightstand. SeismoSense continues monitoring through a secure background service. At the first sign of a dangerous tremor, it triggers a loud alarm and logs the precise geographic coordinates — so you wake up informed, not startled.": "Ekranı kilitleyip telefonu komodine bırakın. SeismoSense güvenli bir arka plan servisiyle izlemeye devam eder. Tehlikeli bir sarsıntıda yüksek sesli bir alarmı tetikler ve coğrafi koordinatları kaydeder.",
+      "100% On-Device Processing": "100% Cihaz İçi İşleme",
+      "All signal analysis happens natively on your device. There are no external server requests for anomaly detection. Your seismic data and GPS coordinates never leave the phone. SeismoSense is built privacy-first from the ground up.": "Tüm sinyal analizi yerel olarak cihazınızda gerçekleşir. Anormallik tespiti için sunucu isteği yapılmaz. Verileriniz asla telefonu terk etmez. SeismoSense tamamen gizlilik odaklı tasarlanmıştır.",
+      "Analysis View & CSV Export": "Analiz Görünümü ve CSV Export",
+      "Review your complete seismic history in a beautiful analysis dashboard showing waveform replays, spectrograms, and event timelines. Export any event as a CSV file for personal records, research, or contributions to citizen science earthquake networks.": "Dalga tekrarlarını ve zaman çizelgelerini gösteren analiz panosunda geçmişinizi inceleyin. Herhangi bir olayı dilediğiniz zaman CSV formatında dışa aktarın.",
+      "Available on iOS & Android": "iOS ve Android'de",
+      "Built natively for both platforms with platform-specific sensor optimizations. Get the full experience on iPhone and Android devices.": "Farklı platformlara özel sensör optimizasyonlarıyla yerel (native) olarak geliştirildi. iPhone ve Android cihazlarda tam deneyimi yaşayın.",
+      "Under The Hood": "Kaputun Altında",
+      "How SeismoSense works": "SeismoSense nasıl çalışır?",
+      "From raw accelerometer data to a logged seismic event — here's the detection pipeline running silently on your device.": "Ham ivmeölçer verisinden kaydedilmiş sismik olaya — işte cihazınızda sessizce çalışan tespit süreci.",
+      "Raw Sensor Acquisition": "Ham Sensör Verisi Okuma",
+      "SeismoSense reads the three-axis accelerometer at high frequency, capturing every micro-movement. A rolling baseline average is calculated to represent the \"quiet\" noise floor of your environment.": "SeismoSense üç eksenli ivmeölçeri okur ve çevrenizin \"sessiz\" yapısını temsil eden bir referans hesaplar.",
+      "STA/LTA Ratio Analysis": "STA/LTA Oran Analizi",
+      "The Short-Term Average (energy in the last few seconds) is continuously divided by the Long-Term Average (energy over the past minutes). When the ratio spikes above a calibrated threshold, an event trigger is issued.": "Kısa Vade enerjisi, sürekli olarak Uzun Vade enerjisine bölünür. Oran kalibre edilmiş bir eşiğin üzerine çıktığında olay tetiklenir.",
+      "Wave Classification & Filtering": "Dalga Sınıflandırma ve Filtre",
+      "Triggered events pass through bandpass filters tuned for P-wave and S-wave frequency ranges. The app estimates arrival time separation, calculates a magnitude approximation, assigns a confidence score, and logs all wave-phase metadata.": "Tetiklenen olaylar özel frekans filtrelerinden geçer. Uygulama varış süresi ayrımını hesaplar, büyüklük tahmini yapar ve verileri kaydeder.",
+      "Local Storage & Optional Export": "Yerel Depolama ve Dışa Aktarım",
+      "All event data is stored securely on-device. Nothing is transmitted externally. You can review every logged event in the Analysis View and export the full waveform dataset as a CSV file at any time.": "Tüm bilgiler cihazda güvenle saklanır, dışa gönderilmez. İstediğiniz zaman geçmişinizi inceleyip CSV olarak dışa aktarabilirsiniz.",
+      "Your data stays on your device. Always.": "Veriniz cihazınızda kalır. Her zaman.",
+      "In an era where apps harvest everything, SeismoSense is built differently. Every byte of seismic data you generate is yours — stored locally and never uploaded.": "SeismoSense farklı inşa edilmiştir. Sismik verinizin her bir baytı sadece size aittir — lokal saklanır ve asla buluta yüklenmez.",
+      "No Server Requests": "Sunucu Bağlantısı Yok",
+      "Anomaly detection runs entirely on-device. The app never phones home for analysis.": "Algılama tamamen cihazdadır. Analiz için asla sunucuya bağlanılmaz.",
+      "Location Stays Local": "Konum Yerel Kalır",
+      "GPS coordinates used for event logging are stored only on your device and never transmitted.": "Kayıt için kullanılan konum sadece cihazınızda saklanır.",
+      "You Control Exports": "Kontrol Sizde",
+      "Data only leaves your device when you choose to export a CSV file. Everything else stays put.": "Veriler sadece siz özellikle CSV çıkarırsanız cihazınızdan ayrılır.",
+      "Start monitoring today": "İzlemeye bugün başlayın",
+      "Available for iPhone and Android. Place your phone on a flat, stable surface and let SeismoSense do the rest.": "iPhone ve Android için yayında. Telefonunuzu sabit bir yüzeye bırakın ve gerisini SeismoSense'e bırakın.",
+      "Built natively in Swift. Optimized for iOS sensor access with background monitoring via location services.": "Swift ile yerel. Arka plan hizmetleriyle detaylı sensör izlemesi.",
+      "Download on App Store": "App Store'dan indir",
+      "Requires iOS 16.0 or later": "iOS 16.0 veya üstü",
+      "Built natively in Kotlin. Full accelerometer access with efficient background monitoring service.": "Kotlin ile yerel. Etkili arka plan izleme servisi ve tam sensör erişimi.",
+      "Requires Android 8.0 or later": "Android 8.0 veya üstü",
+      "Ready?": "Hazır mısınız?",
+      "Turn your phone into a": "Telefonunuzu sismik",
+      "seismic station.": "bir ağa dönüştürün.",
+      "Join the citizen science community tracking seismic activity from the ground up — one phone at a time.": "Sismik aktiviteleri alttan üste doğru takip eden bilim topluluğuna katılın.",
+      "Important Disclaimer": "Önemli Uyarı",
+      "SeismoSense is a personal scientific instrument designed for educational and data-logging purposes. It is NOT a certified seismic monitoring system, NOT a government-authorized early warning service, and NOT a substitute for official emergency services, civil defense instructions, or authorized evacuation orders. In the event of an earthquake or emergency, always follow the guidance of official authorities and emergency services.": "SeismoSense eğitim amaçlı bir ölçüm aracıdır. Resmi bir sismik uyarı cihazı veya alarm servisi DEĞİLDİR. Acil durumda daima resmî makamların bildirimlerine uyun.",
+      "Your personal seismograph. Professional-grade seismic monitoring from the device already in your pocket.": "Cebinizden profesyonel sismik izleme sağlayan kişisel sismografınız.",
+      "App": "Uygulama",
+      "Legal": "Yasal",
+      "Privacy Policy": "Gizlilik Politikası",
+      "Terms of Use": "Kullanım Koşulları",
+      "© 2024 SeismoSense. All rights reserved.": "© 2026 SeismoSense. Tüm hakları saklıdır."
+    };
+
+    // Replace text nodes matching keys in our translation dictionary
+    function traverseAndTranslate(node, dict, toLang) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        let text = node.nodeValue;
+        let originalText = node.parentElement ? node.parentElement.getAttribute('data-i18n-orig') : null;
+
+        if (toLang === 'tr') {
+          // Store original
+          let trimmed = text.trim();
+          if (trimmed.length > 0 && dict[trimmed]) {
+            if (!node.parentElement.hasAttribute('data-i18n-orig')) {
+              node.parentElement.setAttribute('data-i18n-orig', text);
+            }
+            node.nodeValue = text.replace(trimmed, dict[trimmed]);
+          }
+        } else if (toLang === 'en') {
+          // Restore original
+          if (originalText !== null && originalText.trim().length > 0) {
+            node.nodeValue = originalText;
+            node.parentElement.removeAttribute('data-i18n-orig');
+          }
+        }
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        // Skip script and style tags
+        if (node.tagName.toLowerCase() !== 'script' && node.tagName.toLowerCase() !== 'style') {
+          for (let i = 0; i < node.childNodes.length; i++) {
+            traverseAndTranslate(node.childNodes[i], dict, toLang);
+          }
+        }
+      }
+    }
+
+    function setLanguage(lang) {
+      document.getElementById('lang-en').style.opacity = lang === 'en' ? '1' : '0.5';
+      document.getElementById('lang-tr').style.opacity = lang === 'tr' ? '1' : '0.5';
+
+      traverseAndTranslate(document.body, trTranslations, lang);
+      localStorage.setItem('seismosense_lang', lang);
+      document.documentElement.lang = lang;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // First pass: mark nodes properly
+      const savedLang = localStorage.getItem('seismosense_lang') || 'en';
+      if (savedLang === 'tr') {
+        setLanguage('tr');
+      }
+    });
+
   </script>
 </body>
 
